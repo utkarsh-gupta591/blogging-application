@@ -1,0 +1,71 @@
+
+<div class="row">
+  <div class="col-sm-6 pl-5 pt-5 background-left">
+    <h1>Don't just think! Blog it!</h1>
+  </div>
+  <div class="col-sm-6  background-right py-2 pl-5">
+      <div class="card border-0 ml-5 w-75">
+          <div class="card-body">
+              <div class="card-title text-center pb-1">
+                  <h4>Sign up for free</h4>
+              </div>
+              <div class="card-text">
+                <form [formGroup]="signinForm" (ngSubmit)="onSubmit(signinForm)">
+                  <div class="form-row">
+                    <div class="form-group col-sm-6">
+                      <label for="firstName">First name</label>
+                      <input type="text" class="form-control" id="firstName"
+                       placeholder="First name"  [formControl]="signinForm.controls['firstName']">
+                    </div>
+                    <div class="form-group col-sm-6">
+                      <label for="lastName">Last name</label>
+                      <input type="text" class="form-control" id="lastName" 
+                      placeholder="Last name"  [formControl]="signinForm.controls['lastName']">
+                    </div>
+                  </div>
+                  <div class="alert alert-danger" *ngIf="(!signinForm.controls['firstName'].valid 
+                                || !signinForm.controls['lastName'].valid) 
+                                && (signinForm.controls['firstName'].touched || signinForm.controls['lastName'].touched)">
+                                    First name and Last name are required
+                  </div>
+                  <div class="form-group">
+                    <label for="emailAddress">Email address</label>
+                    <input type="email" class="form-control" id="emailAddress" placeholder="Email"
+                    [formControl]="signinForm.controls['email']">
+                  </div>
+                  <div class="alert alert-danger" *ngIf="!signinForm.controls['email'].valid 
+                    && signinForm.controls['email'].touched">
+                     A valid email is required
+                  </div>
+                  <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" placeholder="Password" 
+                    [formControl]="signinForm.controls['password']">
+                  </div>
+                  <div class="alert alert-danger" *ngIf="!signinForm.controls['password'].valid 
+                    && signinForm.controls['password'].touched">
+                    Password must be 8 charaters long
+                  </div>
+                  <div class="form-group">
+                    <label for="confirmPassword">Confirm password</label>
+                    <input type="password" class="form-control" id="confirmPassword" 
+                    placeholder="Confirm Password" [formControl]="signinForm.controls['confirmPassword']">
+                  </div>
+                  <div class="text-center">
+                    <button type="submit" class="btn btn-primary" 
+                    [disabled]="!signinForm.valid">Sign up</button>
+                  </div>
+                </form>
+              </div>
+          </div> <!--card-body-->
+      </div> <!--card-->
+      <div class="alert alert-success" *ngIf="message.length>0">
+        {{ message }}
+    </div>
+
+    <div class="alert alert-danger" *ngIf="userError">
+        {{userError.message}}
+    </div>
+</div><!--col-sm-6-->
+
+</div><!--row-->

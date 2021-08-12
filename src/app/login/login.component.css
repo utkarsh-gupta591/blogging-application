@@ -1,0 +1,21 @@
+.background{
+    background-color:turquoise;
+}
+
+.card {
+    background-color: transparent !important;
+    color: #fff;
+    border: none;
+    margin-top: 35%;
+}
+
+.btn[type=submit]{
+    border-radius: 50px;
+    background-color: #fff;
+    color: rgb(61, 47, 255);
+    border: none;
+}
+
+.btn-link {
+    color: #fff;
+}
